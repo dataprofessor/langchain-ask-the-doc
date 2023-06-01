@@ -1,3 +1,4 @@
 streamlit
 langchain
 openai
+chromadb
