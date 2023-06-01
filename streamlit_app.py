@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
-from langchain.qa import RetrievalQA
+from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
 st.title('🦜🔗 Ask the Doc App')
