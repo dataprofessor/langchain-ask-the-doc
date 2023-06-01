@@ -1,21 +1,18 @@
-# 📦 Streamlit App Starter Kit 
-```
-⬆️ (Replace above with your app's name)
-```
+# 🦜🔗 Langchain - Ask the Doc
 
-Description of the app ...
+Build a Document Question Answering app using Langchain and Streamlit.
 
 ## Demo App
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://starter-kit.streamlitapp.com/)
 
-## Section Heading
+## Get an OpenAI API key
 
-This is filler text, please replace this with text for this section.
+You can get your own OpenAI API key by following the following instructions:
+1. Go to https://platform.openai.com/account/api-keys.
+2. Click on the `+ Create new secret key` button.
+3. Next, enter an identifier name (optional) and click on the `Create secret key` button.
 
-## Further Reading
+## Try out the app
 
-This is filler text, please replace this with a explanatory text about further relevant resources for this repo
-- Resource 1
-- Resource 2
-- Resource 3
+Once the app is loaded, go ahead and enter your OpenAI API key and type a question in the text box and wait for a generated response.
