@@ -12,7 +12,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
         documents = []
     # Split documents into chunks
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-    texts = text_splitter.split_documents(documents)
+    texts = text_splitter.create_documents(documents)
     # Select embeddings
     embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
     # Create vectorstore index
