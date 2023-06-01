@@ -5,6 +5,26 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
+def generate_response(uploaded_file, openai_api_key, query_text):
+    if uploaded_file is not None:
+        documents = [uploaded_file.read().decode('utf-8')]
+    else:
+        documents = []
+    # Split documents into chunks
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    texts = text_splitter.split_documents(documents)
+    # Select embeddings
+    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+    # Create vectorstore index
+    db = Chroma.from_documents(texts, embeddings)
+    # Create retriever interface
+    retriever = db.as_retriever()
+
+    # Create QA chain
+    qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
+    response = qa.run(query_text)
+    return response
+
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
@@ -12,26 +32,6 @@ openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
-if uploaded_file is not None:
-    documents = [uploaded_file.read().decode('utf-8')]
-else:
-    documents = []
-
-# Split documents into chunks
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-texts = text_splitter.split_documents(documents)
-
-# Select embeddings
-embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-
-# Create vectorstore index
-db = Chroma.from_documents(texts, embeddings)
-
-# Create retriever interface
-retriever = db.as_retriever()
-
-# Create QA chain
-qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
 
 # Form input and query
 with st.form('myform'):
@@ -40,5 +40,5 @@ with st.form('myform'):
     if not openai_api_key.startswith('sk-'):
         st.warning('Please enter your OpenAI API key!', icon='⚠')
     if submitted and openai_api_key.startswith('sk-'):
-        response = qa.run(query_text)
+        response = generate_response(uploaded_file, openai_api_key, query_text)
         st.info(response)
