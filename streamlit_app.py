@@ -22,7 +22,7 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
 
 # Select embeddings
-embeddings = OpenAIEmbeddings()
+embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 
 # Create vectorstore index
 db = Chroma.from_documents(texts, embeddings)
