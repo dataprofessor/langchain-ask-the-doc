@@ -7,7 +7,7 @@ from langchain.llms import OpenAI
 
 def generate_response(uploaded_file, openai_api_key, query_text):
     if uploaded_file is not None:
-        documents = [uploaded_file.read().decode('utf-8')]
+        documents = [uploaded_file.read().decode()]
     else:
         documents = []
     # Split documents into chunks
