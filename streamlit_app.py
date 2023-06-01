@@ -8,8 +8,8 @@ from langchain.llms import OpenAI
 def generate_response(uploaded_file, openai_api_key, query_text):
     if uploaded_file is not None:
         documents = [uploaded_file.read().decode()]
-    else:
-        documents = []
+    #else:
+    #    documents = []
     # Split documents into chunks
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
     texts = text_splitter.create_documents(documents)
@@ -19,7 +19,6 @@ def generate_response(uploaded_file, openai_api_key, query_text):
     db = Chroma.from_documents(texts, embeddings)
     # Create retriever interface
     retriever = db.as_retriever()
-
     # Create QA chain
     qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
     response = qa.run(query_text)
