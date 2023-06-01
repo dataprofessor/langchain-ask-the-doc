@@ -31,7 +31,7 @@ db = Chroma.from_documents(texts, embeddings)
 retriever = db.as_retriever()
 
 # Create QA chain
-qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type='stuff', retriever=retriever)
+qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
 
 # Form input and query
 with st.form('myform'):
