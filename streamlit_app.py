@@ -8,6 +8,7 @@ from langchain.llms import OpenAI
 if 'OPENAI_API_KEY' not in st.session_state:
     st.session_state['OPENAI_API_KEY'] = ''
     
+#def generate_response(uploaded_file, openai_api_key, query_text):
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
     if uploaded_file is not None:
