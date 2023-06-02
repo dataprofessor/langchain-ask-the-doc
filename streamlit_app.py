@@ -6,8 +6,7 @@ from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
 def clear_text():
-    #st.session_state.text = ''
-    del st.session_state.text
+    st.session_state.text = ''
 
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
