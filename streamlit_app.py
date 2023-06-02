@@ -30,7 +30,7 @@ st.title('🦜🔗 Ask the Doc App')
 openai_api_key = st.secrets['OPENAI_API_KEY']
 if openai_api_key.startswith('sk-'):
     st.success('API key provided!')
-else:
+if not openai_api_key.startswith('sk-'):
     st.warning('API key is not found!')
 if st.button('Clear API key'):
     del openai_api_key
