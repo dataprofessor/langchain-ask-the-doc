@@ -34,7 +34,8 @@ st.title('🦜🔗 Ask the Doc App')
 #openai_api_key = st.sidebar.text_input('OpenAI API Key')
 st.text_input('OpenAI API Key', key='api_key_value')
 openai_api_key = st.session_state.api_key
-    
+st.write(openai_api_key)
+
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
 
