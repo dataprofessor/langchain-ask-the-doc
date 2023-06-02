@@ -53,5 +53,7 @@ with st.form('myform', clear_on_submit=True):
         #response = generate_response(uploaded_file, openai_api_key, query_text)
         response = generate_response(uploaded_file, st.session_state.temp, query_text)
         result.append(response)
-st.info(response)
+        #st.info(response)
+if len(result):
+    st.info(response)
 # Use template in place of the openai_api_key in the IF conditions above
