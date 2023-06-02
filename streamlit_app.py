@@ -5,8 +5,6 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
-if 'text' not in st.session_state:
-    st.session_state.text = ''
 def clear_text():
     st.session_state.text = ''
 
