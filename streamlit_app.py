@@ -34,6 +34,7 @@ else:
     st.warning('API key is not found!')
 if st.button('Clear API key'):
     del openai_api_key
+    openai_api_key = st.sidebar.text_input('OpenAI API Key')
     
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
