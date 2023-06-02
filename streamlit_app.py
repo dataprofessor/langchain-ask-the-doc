@@ -52,4 +52,4 @@ with st.form('myform'):
 
 if len(result):
     st.info(result[0])
-st.write(st.session_state.text)
+st.session_state.text = ''
