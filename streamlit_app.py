@@ -7,6 +7,7 @@ from langchain.llms import OpenAI
 
 def clear_text():
     st.session_state.text = ''
+    del openai_api_key
 
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
@@ -52,5 +53,3 @@ with st.form('myform'):
 
 if len(result):
     st.info(result[0])
-del st.session_state.text
-clear_text()
