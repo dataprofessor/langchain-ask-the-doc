@@ -30,7 +30,7 @@ def generate_response(uploaded_file, query_text):
     return response
 
 def clear():
-    return st.session_state['OPENAI_API_KEY'] = ''
+    st.session_state['OPENAI_API_KEY'] = st.sidebar.text_input('OpenAI API Key')
 
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
