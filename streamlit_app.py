@@ -5,7 +5,10 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
+if 'temp' not in st.session_state:
+    st.session_state['temp'] = ''
 def clear_text():
+    st.session_state.temp = st.session_state.text
     st.session_state.text = ''
 
 def generate_response(uploaded_file, openai_api_key, query_text):
