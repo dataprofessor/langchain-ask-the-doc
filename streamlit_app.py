@@ -5,12 +5,6 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
-if 'temp' not in st.session_state:
-    st.session_state['temp'] = ''
-def clear_text():
-    st.session_state.temp = st.session_state.text
-    st.session_state.text = ''
-
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
     if uploaded_file is not None:
@@ -32,8 +26,6 @@ def generate_response(uploaded_file, openai_api_key, query_text):
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
-#openai_api_key = st.sidebar.text_input('OpenAI API Key')
-#openai_api_key = st.sidebar.text_input('OpenAI API Key', key='text')
 
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
@@ -43,17 +35,10 @@ result = []
 with st.form('myform', clear_on_submit=True):
     openai_api_key = st.text_input('OpenAI API Key')
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
-    #submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
     submitted = st.form_submit_button('Submit')
-    if openai_api_key.startswith('sk-'):
-        st.success('API key provided!', icon='✅')
-    if not openai_api_key.startswith('sk-'):
-        st.warning('Please enter your OpenAI API key!', icon='❗️')
     if submitted and openai_api_key.startswith('sk-'):
-        #response = generate_response(uploaded_file, openai_api_key, query_text)
-        response = generate_response(uploaded_file, st.session_state.temp, query_text)
+        response = generate_response(uploaded_file, openai_api_key, query_text)
         result.append(response)
-        #st.info(response)
+
 if len(result):
     st.info(response)
-# Use template in place of the openai_api_key in the IF conditions above
