@@ -42,7 +42,7 @@ result = []
 with st.form('myform'):
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     #submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
-    submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key), on_click=clear_text)
+    submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
     if openai_api_key.startswith('sk-'):
         st.success('API key provided!', icon='✅')
     if not openai_api_key.startswith('sk-'):
@@ -54,3 +54,4 @@ with st.form('myform'):
 
 if len(result):
     st.info(result[0])
+    clear_text()
