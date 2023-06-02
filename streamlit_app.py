@@ -29,6 +29,9 @@ def generate_response(uploaded_file, query_text):
     response = qa.run(query_text)
     return response
 
+def clear():
+    st.session_state['OPENAI_API_KEY'] = ''
+
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
@@ -45,7 +48,7 @@ uploaded_file = st.file_uploader('Upload an article', type='txt')
 with st.form('myform'):
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     #submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
-    submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and st.session_state['OPENAI_API_KEY']))
+    submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and st.session_state['OPENAI_API_KEY']), on_click=clear)
     #if openai_api_key.startswith('sk-'):
     if st.session_state['OPENAI_API_KEY'].startswith('sk-'):
         st.success('API key provided!', icon='✅')
