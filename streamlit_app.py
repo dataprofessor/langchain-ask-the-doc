@@ -48,4 +48,4 @@ with st.form('myform'):
         st.warning('Please enter your OpenAI API key!', icon='❗️')
     if submitted and openai_api_key.startswith('sk-'):
         response = generate_response(uploaded_file, openai_api_key, query_text)
-        st.info(response, on_change=clear_text)
+        st.info(response)
