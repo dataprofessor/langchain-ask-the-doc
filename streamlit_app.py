@@ -49,7 +49,7 @@ with st.form('myform'):
         response = generate_response(uploaded_file, openai_api_key, query_text)
         result.append(response)
         #st.info(response)
+        clear_text()
 
 if len(result):
     st.info(result[0])
-    clear_text()
