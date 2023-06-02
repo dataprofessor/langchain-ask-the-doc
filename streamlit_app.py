@@ -43,7 +43,8 @@ result = []
 with st.form('myform', clear_on_submit=True):
     openai_api_key = st.text_input('OpenAI API Key')
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
-    submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
+    #submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
+    submitted = st.form_submit_button('Submit')
     if openai_api_key.startswith('sk-'):
         st.success('API key provided!', icon='✅')
     if not openai_api_key.startswith('sk-'):
