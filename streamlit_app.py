@@ -53,3 +53,4 @@ with st.form('myform'):
         response = generate_response(uploaded_file, st.session_state.temp, query_text)
         result.append(response)
         st.info(response)
+# Use template in place of the openai_api_key in the IF conditions above
