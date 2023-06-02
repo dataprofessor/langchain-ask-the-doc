@@ -41,7 +41,7 @@ uploaded_file = st.file_uploader('Upload an article', type='txt')
 # Form input and query
 result = []
 with st.form('myform', clear_on_submit=True):
-    openai_api_key = st.sidebar.text_input('OpenAI API Key')
+    openai_api_key = st.text_input('OpenAI API Key')
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
     if openai_api_key.startswith('sk-'):
