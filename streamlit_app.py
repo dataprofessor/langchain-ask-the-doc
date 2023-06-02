@@ -9,8 +9,7 @@ if 'api_key' not in st.session_state:
     st.session_state.api_key = ''
 def clear():
     st.session_state.api_key += st.session_state.api_key_value
-openai_api_key = st.session_state.api_key
-    
+
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
     if uploaded_file is not None:
@@ -34,7 +33,8 @@ st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 st.title('🦜🔗 Ask the Doc App')
 #openai_api_key = st.sidebar.text_input('OpenAI API Key')
 st.text_input('OpenAI API Key', key='api_key_value')
-
+openai_api_key = st.session_state.api_key
+    
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
 
