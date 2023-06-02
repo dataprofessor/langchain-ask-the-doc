@@ -51,4 +51,6 @@ with st.form('myform'):
         response = generate_response(uploaded_file, openai_api_key, query_text)
         result.append(response)
         #st.info(response)
-st.info(result[0])
+
+if len(result):
+    st.info(result[0])
