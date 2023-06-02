@@ -32,10 +32,6 @@ openai_api_key = st.secrets['OPENAI_API_KEY']
 if st.button('Clear API key'):
     del openai_api_key
     openai_api_key = st.sidebar.text_input('OpenAI API Key')
-if openai_api_key.startswith('sk-'):
-    st.success('API key provided!')
-if not openai_api_key.startswith('sk-'):
-    st.warning('API key is not found!')
 
     
 # File upload
@@ -45,6 +41,8 @@ uploaded_file = st.file_uploader('Upload an article', type='txt')
 with st.form('myform'):
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
+    if openai_api_key.startswith('sk-'):
+        st.success('API key provided!', icon='✅')
     if not openai_api_key.startswith('sk-'):
         st.warning('Please enter your OpenAI API key!', icon='⚠')
     if submitted and openai_api_key.startswith('sk-'):
