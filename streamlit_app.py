@@ -32,7 +32,7 @@ st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
 #openai_api_key = st.sidebar.text_input('OpenAI API Key')
-openai_api_key = st.sidebar.text_input('OpenAI API Key', key='text)
+openai_api_key = st.sidebar.text_input('OpenAI API Key', key='text')
 
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
