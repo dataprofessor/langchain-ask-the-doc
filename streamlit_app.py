@@ -29,18 +29,15 @@ def generate_response(uploaded_file, query_text):
     response = qa.run(query_text)
     return response
 
+placeholder = st.sidebar.empty()
 def clear():
-    st.session_state['OPENAI_API_KEY'] = placeholder.sidebar.text_input('OpenAI API Key')
+    st.session_state['OPENAI_API_KEY'] = placeholder.text_input('OpenAI API Key')
 
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
 #openai_api_key = st.sidebar.text_input('OpenAI API Key')
-placeholder = st.empty()
-st.session_state['OPENAI_API_KEY'] = placeholder.sidebar.text_input('OpenAI API Key')
-
-if st.button('Clear API key'):
-    del openai_api_key
+st.session_state['OPENAI_API_KEY'] = placeholder.text_input('OpenAI API Key')
  
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
