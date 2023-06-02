@@ -39,6 +39,7 @@ openai_api_key = st.sidebar.text_input('OpenAI API Key', key='text')
 uploaded_file = st.file_uploader('Upload an article', type='txt')
 
 # Form input and query
+result = []
 with st.form('myform'):
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
