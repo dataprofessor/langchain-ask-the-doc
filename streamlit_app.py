@@ -26,8 +26,8 @@ def generate_response(uploaded_file, openai_api_key, query_text):
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
-#openai_api_key = st.sidebar.text_input('OpenAI API Key')
-openai_api_key = st.secrets['OPENAI_API_KEY']
+openai_api_key = st.sidebar.text_input('OpenAI API Key')
+#openai_api_key = st.secrets['OPENAI_API_KEY']
 
 if st.button('Clear API key'):
     del openai_api_key
