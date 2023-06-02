@@ -33,13 +33,13 @@ st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 
 st.title('🦜🔗 Ask the Doc App')
 #openai_api_key = st.sidebar.text_input('OpenAI API Key')
+st.text_input('OpenAI API Key', key='api_key_value')
 
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
 
 # Form input and query
 with st.form('myform', clear_on_submit=True):
-    st.text_input('OpenAI API Key', key='api_key_value')
     query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     #submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key))
     submitted = st.form_submit_button('Submit', disabled = not (uploaded_file and openai_api_key), on_click=clear)
