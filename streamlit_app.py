@@ -43,5 +43,5 @@ with st.form('myform', clear_on_submit=True):
 
 if len(result):
     st.info(response)
-    
-st.write(openai_api_key)
+if openai_api_key:
+    st.write(openai_api_key)
