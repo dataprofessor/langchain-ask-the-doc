@@ -32,7 +32,9 @@ if openai_api_key.startswith('sk-'):
     st.success('API key provided!')
 else:
     st.warning('API key is not found!')
-
+if st.button('Clear API key'):
+    del openai_api_key
+    
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='txt')
 
