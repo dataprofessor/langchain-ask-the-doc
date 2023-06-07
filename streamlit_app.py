@@ -36,7 +36,6 @@ query_text = st.text_input('Enter your question:', placeholder = 'Please provide
 result = []
 with st.form('myform', clear_on_submit=True):
     openai_api_key = st.text_input('OpenAI API Key', type = 'password')
-    #query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled = not uploaded_file)
     submitted = st.form_submit_button('Submit')
     if submitted and openai_api_key.startswith('sk-'):
         response = generate_response(uploaded_file, openai_api_key, query_text)
