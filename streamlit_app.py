@@ -23,6 +23,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
     response = qa.run(query_text)
     return response
 
+# Page title
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 st.title('🦜🔗 Ask the Doc App')
 
