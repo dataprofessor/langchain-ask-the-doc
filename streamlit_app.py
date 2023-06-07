@@ -20,8 +20,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
     retriever = db.as_retriever()
     # Create QA chain
     qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
-    response = qa.run(query_text)
-    return response
+    return qa.run(query_text)
 
 # Page title
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
