@@ -1,6 +1,6 @@
-# 🦜🔗 Langchain - Ask the Doc
+# 🦜🔗 LangChain - Ask the Doc
 
-Build a Document Question Answering app using Langchain and Streamlit.
+Build a Document Question Answering app using LangChain and Streamlit.
 
 ## Demo App
 
