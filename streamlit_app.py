@@ -21,8 +21,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
         # Create QA chain
         qa = RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key), chain_type='stuff', retriever=retriever)
         return qa.run(query_text)
-    else:
-        return st.warning('Please upload your document file to get started!')
+
 
 # Page title
 st.set_page_config(page_title='🦜🔗 Ask the Doc App')
